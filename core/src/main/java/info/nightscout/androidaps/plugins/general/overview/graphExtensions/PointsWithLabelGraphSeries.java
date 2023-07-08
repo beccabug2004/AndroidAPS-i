@@ -205,11 +205,12 @@ public class PointsWithLabelGraphSeries<E extends DataPointWithLabelInterface> e
                     points[2] = new Point((int) (endX - scaledPxSize), (int) (endY + scaledPxSize * 0.67));
                     drawArrows(points, canvas, mPaint);
                 } else if (value.getShape() == Shape.BOLUS) {
-                    mPaint.setStrokeWidth(0);
+                    mPaint.setStrokeWidth(2);
                     Point[] points = new Point[3];
-                    points[0] = new Point((int) endX, (int) (endY - scaledPxSize));
-                    points[1] = new Point((int) (endX + scaledPxSize), (int) (endY + scaledPxSize * 0.67));
-                    points[2] = new Point((int) (endX - scaledPxSize), (int) (endY + scaledPxSize * 0.67));
+                    float size = value.getSize() * scaledPxSize;
+                    points[0] = new Point((int) endX, (int) (endY - size));
+                    points[1] = new Point((int) (endX + size), (int) (endY + size * 0.67));
+                    points[2] = new Point((int) (endX - size), (int) (endY + size * 0.67));
                     mPaint.setStyle(Paint.Style.FILL_AND_STROKE);
                     drawArrows(points, canvas, mPaint);
                     if (!value.getLabel().isEmpty())
